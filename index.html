@@ -8,10 +8,10 @@
     body {
       margin: 0;
       padding: 0;
-      background: #000;
-      color: #fff;
+      background-color: #000;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow-x: hidden;
+      color: #fff;
     }
 
     h1, p, a {
@@ -59,7 +59,6 @@
       text-shadow: 0 0 15px #ffd700, 0 0 25px #fff000;
     }
 
-    /* Sparkle Background */
     .sparkle {
       position: fixed;
       width: 3px;
@@ -82,7 +81,6 @@
       }
     }
 
-    /* Responsive layout */
     @media (max-width: 768px) {
       .product-img, .original-size {
         width: 90%;
@@ -97,28 +95,27 @@
 </head>
 <body>
 
-  <!-- Invisible background to enable audio autoplay -->
+  <!-- Tap to start music -->
   <div onclick="document.getElementById('bg-music').play()" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;"></div>
 
   <!-- Background Music -->
   <audio id="bg-music" autoplay loop>
-    <source src="hedwigs_theme.mp3" type="audio/mpeg">
+    <source src="hedwigs_theme.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const audio = document.getElementById('bg-music');
-      audio.volume = 0.5;
+      document.getElementById('bg-music').volume = 0.5;
     });
 
-    // Create sparkles dynamically
+    // Add background sparkles
     for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.classList.add('sparkle');
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.animationDelay = `${Math.random() * 5}s`;
-      document.body.appendChild(star);
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = `${Math.random() * 100}%`;
+      sparkle.style.top = `${Math.random() * 100}%`;
+      sparkle.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(sparkle);
     }
   </script>
 
@@ -136,7 +133,6 @@
   </p>
 
   <hr />
-
   <p style="font-size:15px;">More about the wands:</p>
   <p>
     <a href="https://harrypotter.fandom.com/wiki/Elder_Wand">The Elder Wand</a><br />
@@ -151,7 +147,6 @@
   </p>
 
   <hr />
-
   <p style="font-size:40px;">Wands</p>
 
   <img src="image1.jpg" alt="Elder Wand" class="product-img" />
@@ -182,7 +177,6 @@
   <div class="wand-name">Luna Lovegood</div>
 
   <hr />
-
   <p style="font-size:40px;">Other Merchandise</p>
   <hr />
 
