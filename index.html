@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PuffDorInClaw</title>
+  <link rel="icon" type="image/png" href="image5.png">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+
+    hr {
+      border-color: #444;
+    }
+
+    .logo-img {
+      max-width: 300px;
+      height: auto;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .product-img {
+      width: 60%;
+      max-width: 500px;
+      height: auto;
+      display: block;
+      margin: 20px auto 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #ffd70099;
+      transition: transform 0.3s ease;
+    }
+
+    .product-img:hover {
+      transform: scale(1.02);
+    }
+
+    .wand-name {
+      text-align: center;
+      color: #ffd700;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 5px #ffd700;
+      transition: text-shadow 0.3s ease;
+    }
+
+    .wand-name:hover {
+      text-shadow: 0 0 15px #ffd700, 0 0 25px #fff000;
+    }
+
+    .original-size {
+      width: auto;
+      max-width: 100%;
+      display: block;
+      margin: 20px auto 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #ffd70099;
+    }
+
+    #click-area {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Invisible Click Area to Trigger Music -->
+  <div id="click-area"></div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
+    <source src="hedwigs_theme.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const clickArea = document.getElementById("click-area");
+    const bgMusic = document.getElementById("bg-music");
+
+    // Set volume to 50%
+    bgMusic.volume = 0.5;
+
+    // Start music on first click
+    clickArea.addEventListener("click", () => {
+      bgMusic.play();
+      clickArea.remove(); // Remove click area after first interaction
+    });
+  </script>
+
+  <!-- Logo -->
+  <img src="image5.png" alt="Hogwarts Crest" class="logo-img">
+
+  <!-- Title -->
+  <h1 style="font-size:50px;text-align:center;">PuffDorInClaw</h1>
+
+  <!-- Description -->
+  <p style="font-size:20px; text-align:center; padding: 0 20px;">
+    Step into the magical world of Harry Potter with our exclusive <br>
+    collection of wands and merchandise! Whether you're a Gryffindor,
+    Slytherin, Hufflepuff, or Ravenclaw, we offer high-quality
+    authentic wands, apparel, collectibles, and accessories to bring your
+    wizarding dreams to life.
+  </p>
+
+  <hr>
+
+  <!-- Wand Info Links -->
+  <p style="font-size:15px; text-align:center;">More about the wands:</p>
+  <p style="text-align: center;">
+    <a href="https://harrypotter.fandom.com/wiki/Elder_Wand">The Elder Wand</a><br>
+    <a href="https://harrypotter.fandom.com/wiki/Sirius_Black%27s_wand">Sirius Black's Wand</a><br>
+    <a href="https://harrypotter.fandom.com/wiki/Albus_Dumbledore%27s_wand">Albus Dumbledore's Wand</a><br>
+    <a href="https://harrypotter.fandom.com/wiki/Hermione_Granger%27s_wand">Hermione Granger's Wand</a><br>
+    <a href="https://harrypotter.fandom.com/wiki/Harry_Potter%27s_wand">Harry Potter's Wand</a><br>
+    <a href="https://harrypotter.fandom.com/wiki/Draco_Malfoy%27s_wand">Draco Malfoy's Wand</a><br>
+    <a href="https://harrypotter.fandom.com/wiki/Bellatrix_Lestrange%27s_wand">Bellatrix Lestrange's Wand</a><br>
+    <a href="https://harrypotter.fandom.com/wiki/Neville_Longbottom%27s_wand">Neville Longbottom's Wand</a><br>
+    <a href="https://harrypotter.fandom.com/wiki/Luna_Lovegood%27s_wand">Luna Lovegood's Wand</a>
+  </p>
+
+  <hr>
+
+  <p style="font-size:40px; text-align:center; padding: 0 20px;">Wands</p>
+
+  <img src="image1.jpg" alt="Elder Wand" class="product-img">
+  <div class="wand-name">Elder Wand</div>
+
+  <img src="image2.jpg" alt="Sirius Black's Wand" class="product-img">
+  <div class="wand-name">Sirius Black</div>
+
+  <img src="image3.jpeg" alt="Albus Dumbledore's Wand" class="product-img">
+  <div class="wand-name">Albus Dumbledore</div>
+
+  <img src="image4.png" alt="Hermione Granger's Wand" class="product-img">
+  <div class="wand-name">Hermione Granger</div>
+
+  <img src="image6.png" alt="Harry Potter's Wand" class="product-img">
+  <div class="wand-name">Harry Potter</div>
+
+  <img src="image7.png" alt="Draco Malfoy's Wand" class="product-img">
+  <div class="wand-name">Draco Malfoy</div>
+
+  <img src="image11.png" alt="Bellatrix Lestrange's Wand" class="product-img">
+  <div class="wand-name">Bellatrix Lestrange</div>
+
+  <img src="image9.png" alt="Neville Longbottom's Wand" class="product-img">
+  <div class="wand-name">Neville Longbottom</div>
+
+  <img src="image10.png" alt="Luna Lovegood's Wand" class="product-img">
+  <div class="wand-name">Luna Lovegood</div>
+
+  <hr>
+
+  <p style="font-size:40px; text-align:center; padding: 0 20px;">Other Merchandise</p>
+  <hr>
+
+  <img src="123.png" class="product-img">
+  <div class="wand-name">Bookmarks</div>
+
+  <img src="1231.png" class="original-size">
+  <div class="wand-name">Time Turner Necklace</div>
+
+  <img src="1232.png" class="product-img">
+  <div class="wand-name">Complete Book Set</div>
+
+  <img src="1233.png" class="product-img">
+  <div class="wand-name">House Crest Notebook</div>
+
+  <img src="1234.png" class="product-img">
+  <div class="wand-name">Ceramic Mug</div>
+
+  <img src="1235.png" class="original-size">
+  <div class="wand-name">Deathly Hallows Necklace</div>
+
+</body>
+</html>
