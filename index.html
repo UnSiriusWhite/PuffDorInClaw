@@ -4,83 +4,56 @@
   <meta charset="UTF-8">
   <title>PuffDorInClaw</title>
   <link rel="icon" type="image/png" href="image5.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* General Reset */
     body {
-      background-color: #000;
       margin: 0;
       padding: 0;
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #000;
+      font-family: 'Arial', sans-serif;
+      color: white;
       overflow-x: hidden;
-      position: relative;
     }
 
-    /* Magical Background */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
-      background-size: 20px 20px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.03), transparent 70%);
-      z-index: 0;
-      pointer-events: none;
+    h1, p, a {
+      text-align: center;
+      color: #ffd700;
     }
 
     a {
-      color: #ffd700;
       text-decoration: none;
+    }
+
+    hr {
+      border-color: #444;
     }
 
     .logo-img {
       max-width: 300px;
       height: auto;
-      margin: 20px auto;
       display: block;
-      z-index: 1;
-      position: relative;
+      margin: 20px auto;
     }
 
-    h1, p {
-      text-align: center;
-      z-index: 1;
-      position: relative;
-    }
-
-    hr {
-      border-color: #444;
-      margin: 40px 10%;
-    }
-
-    .product-img {
-      width: 80%;
+    .product-img, .original-size {
+      width: 60%;
       max-width: 500px;
       height: auto;
       display: block;
       margin: 20px auto 10px;
       border-radius: 10px;
-      box-shadow: 0 0 25px #ffd700a8, 0 0 40px #ffcc0080, 0 0 60px #fff00066;
+      box-shadow: 0 0 20px 5px #ffd700aa;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      z-index: 1;
-      position: relative;
     }
 
-    .product-img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 35px #ffd700cc, 0 0 55px #ffcc00cc, 0 0 80px #fff000aa;
+    .original-size {
+      width: auto;
+      max-width: 100%;
+    }
+
+    .product-img:hover, .original-size:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 35px 12px #ffea00cc;
     }
 
     .wand-name {
@@ -91,79 +64,86 @@
       margin-bottom: 30px;
       text-shadow: 0 0 5px #ffd700;
       transition: text-shadow 0.3s ease;
-      z-index: 1;
-      position: relative;
     }
 
     .wand-name:hover {
       text-shadow: 0 0 15px #ffd700, 0 0 25px #fff000;
     }
 
-    .original-size {
-      width: auto;
-      max-width: 100%;
-      display: block;
-      margin: 20px auto 10px;
-      border-radius: 10px;
-      box-shadow: 0 0 25px #ffd700a8, 0 0 40px #ffcc0080, 0 0 60px #fff00066;
+    /* Magical Sparkle & Mist Animation */
+    .background-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(255,215,0,0.1), transparent 70%),
+                  url('https://www.transparenttextures.com/patterns/stardust.png');
+      animation: shimmer 15s infinite linear alternate;
+      opacity: 0.3;
     }
 
-    .original-size:hover {
-      box-shadow: 0 0 35px #ffd700cc, 0 0 55px #ffcc00cc, 0 0 80px #fff000aa;
+    @keyframes shimmer {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 100px; }
     }
 
-    /* Responsive Text */
+    /* Invisible music click trigger */
+    .click-trigger {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      background: transparent;
+    }
+
     @media (max-width: 768px) {
+      .product-img, .original-size {
+        width: 90%;
+      }
+
       h1 {
-        font-size: 40px;
+        font-size: 35px;
       }
 
       p {
         font-size: 16px;
-        padding: 0 10px;
       }
-
-      .wand-name {
-        font-size: 16px;
-      }
-    }
-
-    /* Invisible click area for autoplay */
-    #bgClickArea {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 9999;
-      background: transparent;
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Music Trigger -->
-  <div id="bgClickArea" onclick="playMusic()"></div>
-  <audio id="bgMusic" loop>
+  <!-- Background Animation Layer -->
+  <div class="background-layer"></div>
+
+  <!-- Invisible trigger area -->
+  <div class="click-trigger" onclick="document.getElementById('bg-music').play()"></div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" autoplay loop>
     <source src="hedwigs_theme.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-
   <script>
-    function playMusic() {
-      const audio = document.getElementById('bgMusic');
+    window.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('bg-music');
       audio.volume = 0.5;
-      audio.play();
-      document.getElementById('bgClickArea').style.display = 'none';
-    }
+    });
   </script>
 
   <!-- Logo -->
   <img src="image5.png" alt="Hogwarts Crest" class="logo-img">
 
   <!-- Title -->
-  <h1 style="font-size:50px;">PuffDorInClaw</h1>
+  <h1>PuffDorInClaw</h1>
 
   <!-- Description -->
-  <p style="font-size:20px; padding: 0 20px;">
+  <p>
     Step into the magical world of Harry Potter with our exclusive <br>
     collection of wands and merchandise! Whether you're a Gryffindor,
     Slytherin, Hufflepuff, or Ravenclaw, we offer high-quality
@@ -174,7 +154,7 @@
   <hr>
 
   <!-- Wand Info Links -->
-  <p style="font-size:15px;">More about the wands:</p>
+  <p>More about the wands:</p>
   <p>
     <a href="https://harrypotter.fandom.com/wiki/Elder_Wand">The Elder Wand</a><br>
     <a href="https://harrypotter.fandom.com/wiki/Sirius_Black%27s_wand">Sirius Black's Wand</a><br>
