@@ -2,15 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PuffDorInClaw</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
       background: #0c0c0c;
       color: #ffd700;
       font-family: 'Garamond', serif;
       overflow-x: hidden;
+    }
+
+    /* Sparkle + mist animation background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(255,215,0,0.05) 1px, transparent 1px),
+                  rgba(255, 255, 255, 0.03);
+      background-size: 3px 3px;
+      pointer-events: none;
+      z-index: -1;
+      animation: shimmer 12s infinite alternate;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateY(0); opacity: 0.4; }
+      100% { transform: translateY(-20px); opacity: 0.6; }
     }
 
     .logo-container {
@@ -35,16 +54,147 @@
               drop-shadow(0 0 60px #ffcc00);
     }
 
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 20px;
+    }
+
+    .item {
+      text-align: center;
+      max-width: 90vw;
+    }
+
+    .item img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 20px gold;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px #ffcc00, 0 0 60px #ffd700;
+      animation: spellburst 0.6s ease-out;
+    }
+
+    @keyframes spellburst {
+      0% { filter: brightness(1.2) drop-shadow(0 0 5px gold); }
+      50% { filter: brightness(2) drop-shadow(0 0 20px #fff78a); }
+      100% { filter: brightness(1.2) drop-shadow(0 0 5px gold); }
+    }
+
+    .label {
+      font-size: 1.2rem;
+      color: gold;
+      text-shadow: 0 0 10px #ffd700, 0 0 20px #ffcc00;
+      margin-top: 10px;
+    }
+
     @media (max-width: 600px) {
       .logo {
         width: 60vw;
+      }
+
+      .item img {
+        max-width: 90vw;
+      }
+
+      .label {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Invisible click area for autoplay -->
+  <div onclick="playMusic()" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;"></div>
+
+  <!-- Audio -->
+  <audio id="background-music" loop volume="0.5">
+    <source src="hedwigs-theme.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <script>
+    function playMusic() {
+      const music = document.getElementById("background-music");
+      music.volume = 0.5;
+      music.play();
+    }
+  </script>
+
+  <!-- Logo -->
   <div class="logo-container">
-    <img src="logo.png" alt="PuffDorInClaw Logo" class="logo" />
+    <img src="logo.png" alt="PuffDorInClaw Logo" class="logo">
   </div>
+
+  <!-- Wand & Merchandise Items -->
+  <div class="container">
+    <!-- Wands -->
+    <div class="item">
+      <img src="image1.jpg" alt="Elder Wand">
+      <div class="label">Elder Wand</div>
+    </div>
+    <div class="item">
+      <img src="image2.jpg" alt="Sirius Black">
+      <div class="label">Sirius Black</div>
+    </div>
+    <div class="item">
+      <img src="image3.jpg" alt="Albus Dumbledore">
+      <div class="label">Albus Dumbledore</div>
+    </div>
+    <div class="item">
+      <img src="image4.jpg" alt="Hermione Granger">
+      <div class="label">Hermione Granger</div>
+    </div>
+    <div class="item">
+      <img src="image5.jpg" alt="Harry Potter">
+      <div class="label">Harry Potter</div>
+    </div>
+    <div class="item">
+      <img src="image6.jpg" alt="Draco Malfoy">
+      <div class="label">Draco Malfoy</div>
+    </div>
+    <div class="item">
+      <img src="image7.jpg" alt="Bellatrix Lestrange">
+      <div class="label">Bellatrix Lestrange</div>
+    </div>
+    <div class="item">
+      <img src="image8.jpg" alt="Neville Longbottom">
+      <div class="label">Neville Longbottom</div>
+    </div>
+    <div class="item">
+      <img src="image9.jpg" alt="Luna Lovegood">
+      <div class="label">Luna Lovegood</div>
+    </div>
+
+    <!-- Merchandise -->
+    <div class="item">
+      <img src="image10.jpg" alt="Hogwarts Bookmark">
+      <div class="label">Hogwarts Bookmark</div>
+    </div>
+    <div class="item">
+      <img src="image11.jpg" alt="Marauder’s Map Notebook">
+      <div class="label">Marauder’s Map Notebook</div>
+    </div>
+    <div class="item">
+      <img src="image12.jpg" alt="Time Turner Necklace" style="max-width: none;">
+      <div class="label">Time Turner Necklace</div>
+    </div>
+    <div class="item">
+      <img src="image13.jpg" alt="Deathly Hallows Necklace" style="max-width: none;">
+      <div class="label">Deathly Hallows Necklace</div>
+    </div>
+    <div class="item">
+      <img src="image14.jpg" alt="Platform 9¾ Mug">
+      <div class="label">Platform 9¾ Mug</div>
+    </div>
+  </div>
+
 </body>
 </html>
