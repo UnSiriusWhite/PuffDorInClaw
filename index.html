@@ -14,13 +14,14 @@
       overflow-x: hidden;
     }
 
-    h1, p, a {
+    h1, p {
       text-align: center;
       color: #ffd700;
     }
 
     a {
       text-decoration: none;
+      color: #ffd700;
     }
 
     hr {
@@ -34,12 +35,15 @@
       margin: 20px auto;
     }
 
+    .product-block {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
     .product-img, .original-size {
       width: 60%;
       max-width: 500px;
       height: auto;
-      display: block;
-      margin: 20px auto 10px;
       border-radius: 10px;
       box-shadow: 0 0 25px 8px #ffd700cc;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -56,11 +60,10 @@
     }
 
     .wand-name {
-      text-align: center;
       color: #ffd700;
       font-weight: bold;
       font-size: 18px;
-      margin-bottom: 30px;
+      margin-top: 10px;
       text-shadow: 0 0 5px #ffd700;
       transition: text-shadow 0.3s ease;
     }
@@ -105,11 +108,11 @@
 </head>
 <body>
 
-  <!-- Sparkle Background -->
+  <!-- Sparkles -->
   <div class="background-layer"></div>
 
-  <!-- Background Music -->
-  <audio id="bg-music" autoplay loop>
+  <!-- Music -->
+  <audio id="bg-music" loop>
     <source src="hedwigs_theme.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
@@ -117,22 +120,21 @@
   <script>
     const audio = document.getElementById('bg-music');
     audio.volume = 0.5;
+    let musicStarted = false;
 
-    document.addEventListener('click', function handleFirstClick(e) {
-      if (!e.target.closest('a') && !e.target.closest('img')) {
+    document.addEventListener('click', function(e) {
+      if (!musicStarted && !e.target.closest('a') && !e.target.closest('img')) {
         audio.play().catch(() => {});
-        document.removeEventListener('click', handleFirstClick);
+        musicStarted = true;
       }
     });
   </script>
 
-  <!-- Hogwarts Crest -->
+  <!-- Crest -->
   <img src="image5.png" alt="Hogwarts Crest" class="logo-img">
 
-  <!-- Title -->
   <h1>PuffDorInClaw</h1>
 
-  <!-- Description -->
   <p>
     Step into the magical world of Harry Potter with our exclusive <br>
     collection of wands and merchandise! Whether you're a Gryffindor,
@@ -143,7 +145,7 @@
 
   <hr>
 
-  <!-- Wand Info Links -->
+  <!-- Wand Info -->
   <p>More about the wands:</p>
   <p>
     <a href="https://harrypotter.fandom.com/wiki/Elder_Wand">The Elder Wand</a><br>
@@ -160,54 +162,84 @@
   <hr>
   <p style="font-size:40px;">Wands</p>
 
-  <a href="https://amzn.to/3Ew7YOC"><img src="image1.jpg" alt="Elder Wand" class="product-img"></a>
-  <div class="wand-name">Elder Wand</div>
+  <!-- Wands with Amazon links -->
+  <div class="product-block">
+    <a href="https://amzn.to/3Ew7YOC"><img src="image1.jpg" class="product-img" alt="Elder Wand"></a>
+    <div class="wand-name">Elder Wand</div>
+  </div>
 
-  <a href="https://amzn.to/3Ew7YOC"><img src="image2.jpg" alt="Sirius Black's Wand" class="product-img"></a>
-  <div class="wand-name">Sirius Black</div>
+  <div class="product-block">
+    <a href="https://amzn.to/3Ew7YOC"><img src="image2.jpg" class="product-img" alt="Sirius Black Wand"></a>
+    <div class="wand-name">Sirius Black</div>
+  </div>
 
-  <img src="image3.jpeg" alt="Albus Dumbledore's Wand" class="product-img">
-  <div class="wand-name">Albus Dumbledore</div>
+  <div class="product-block">
+    <img src="image3.jpeg" class="product-img" alt="Albus Dumbledore Wand">
+    <div class="wand-name">Albus Dumbledore</div>
+  </div>
 
-  <a href="https://amzn.to/4cAo3zm"><img src="image4.png" alt="Hermione Granger's Wand" class="product-img"></a>
-  <div class="wand-name">Hermione Granger</div>
+  <div class="product-block">
+    <a href="https://amzn.to/4cAo3zm"><img src="image4.png" class="product-img" alt="Hermione Granger Wand"></a>
+    <div class="wand-name">Hermione Granger</div>
+  </div>
 
-  <a href="https://amzn.to/4jiqJED"><img src="image6.png" alt="Harry Potter's Wand" class="product-img"></a>
-  <div class="wand-name">Harry Potter</div>
+  <div class="product-block">
+    <a href="https://amzn.to/4jiqJED"><img src="image6.png" class="product-img" alt="Harry Potter Wand"></a>
+    <div class="wand-name">Harry Potter</div>
+  </div>
 
-  <a href="https://amzn.to/4cAoJEU"><img src="image7.png" alt="Draco Malfoy's Wand" class="product-img"></a>
-  <div class="wand-name">Draco Malfoy</div>
+  <div class="product-block">
+    <a href="https://amzn.to/4cAoJEU"><img src="image7.png" class="product-img" alt="Draco Wand"></a>
+    <div class="wand-name">Draco Malfoy</div>
+  </div>
 
-  <a href="https://amzn.to/4cCmMb3"><img src="image11.png" alt="Bellatrix Lestrange's Wand" class="product-img"></a>
-  <div class="wand-name">Bellatrix Lestrange</div>
+  <div class="product-block">
+    <a href="https://amzn.to/4cCmMb3"><img src="image11.png" class="product-img" alt="Bellatrix Wand"></a>
+    <div class="wand-name">Bellatrix Lestrange</div>
+  </div>
 
-  <a href="https://amzn.to/4jyoNaG"><img src="image9.png" alt="Neville Longbottom's Wand" class="product-img"></a>
-  <div class="wand-name">Neville Longbottom</div>
+  <div class="product-block">
+    <a href="https://amzn.to/4jyoNaG"><img src="image9.png" class="product-img" alt="Neville Wand"></a>
+    <div class="wand-name">Neville Longbottom</div>
+  </div>
 
-  <a href="https://amzn.to/4jIvMhf"><img src="image10.png" alt="Luna Lovegood's Wand" class="product-img"></a>
-  <div class="wand-name">Luna Lovegood</div>
+  <div class="product-block">
+    <a href="https://amzn.to/4jIvMhf"><img src="image10.png" class="product-img" alt="Luna Wand"></a>
+    <div class="wand-name">Luna Lovegood</div>
+  </div>
 
   <hr>
   <p style="font-size:40px;">Other Merchandise</p>
-  <hr>
 
-  <img src="123.png" class="product-img">
-  <div class="wand-name">Bookmarks</div>
+  <div class="product-block">
+    <img src="123.png" class="product-img">
+    <div class="wand-name">Bookmarks</div>
+  </div>
 
-  <img src="1231.png" class="original-size">
-  <div class="wand-name">Time Turner Necklace</div>
+  <div class="product-block">
+    <img src="1231.png" class="original-size">
+    <div class="wand-name">Time Turner Necklace</div>
+  </div>
 
-  <img src="1232.png" class="product-img">
-  <div class="wand-name">Complete Book Set</div>
+  <div class="product-block">
+    <img src="1232.png" class="product-img">
+    <div class="wand-name">Complete Book Set</div>
+  </div>
 
-  <img src="1233.png" class="product-img">
-  <div class="wand-name">House Crest Notebook</div>
+  <div class="product-block">
+    <img src="1233.png" class="product-img">
+    <div class="wand-name">House Crest Notebook</div>
+  </div>
 
-  <img src="1234.png" class="product-img">
-  <div class="wand-name">Ceramic Mug</div>
+  <div class="product-block">
+    <img src="1234.png" class="product-img">
+    <div class="wand-name">Ceramic Mug</div>
+  </div>
 
-  <img src="1235.png" class="original-size">
-  <div class="wand-name">Deathly Hallows Necklace</div>
+  <div class="product-block">
+    <img src="1235.png" class="original-size">
+    <div class="wand-name">Deathly Hallows Necklace</div>
+  </div>
 
 </body>
 </html>
