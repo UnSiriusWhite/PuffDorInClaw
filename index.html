@@ -2,181 +2,201 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PuffDorInClaw</title>
+  <link rel="icon" type="image/png" href="image5.png" />
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: #0c0c0c;
-      color: #ffd700;
-      font-family: 'Garamond', serif;
+      background-color: #000;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow-x: hidden;
+      color: #fff;
     }
 
-    .logo-container {
+    h1, p, a {
       text-align: center;
-      margin: 40px 0;
+      color: #ffd700;
     }
 
-    .logo {
-      width: 45vw;
-      max-width: 350px;
-      height: auto;
-      filter: drop-shadow(0 0 20px gold)
-              drop-shadow(0 0 30px #ffd700)
-              drop-shadow(0 0 50px #ffcc00);
-      transition: transform 0.3s ease-in-out;
+    hr {
+      border-color: #555;
+      margin: 40px auto;
+      width: 80%;
     }
 
-    .logo:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 25px gold)
-              drop-shadow(0 0 40px #ffd700)
-              drop-shadow(0 0 60px #ffcc00);
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-      padding: 20px;
-    }
-
-    .item {
-      text-align: center;
-      max-width: 90vw;
-    }
-
-    .item img {
-      width: 100%;
+    .logo-img {
       max-width: 300px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .product-img, .original-size {
+      display: block;
+      margin: 20px auto 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px 8px rgba(255, 215, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 90%;
       height: auto;
-      border-radius: 12px;
-      box-shadow: 0 0 20px gold;
-      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .item img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 35px #ffcc00, 0 0 60px #ffd700;
-      animation: spellburst 0.6s ease-out;
+    .product-img:hover, .original-size:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 35px 15px rgba(255, 215, 0, 0.9);
     }
 
-    @keyframes spellburst {
-      0% { filter: brightness(1.2) drop-shadow(0 0 5px gold); }
-      50% { filter: brightness(2) drop-shadow(0 0 20px #fff78a); }
-      100% { filter: brightness(1.2) drop-shadow(0 0 5px gold); }
+    .wand-name {
+      text-align: center;
+      color: #ffd700;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 5px #ffd700;
     }
 
-    .label {
-      font-size: 1.2rem;
-      color: gold;
-      text-shadow: 0 0 10px #ffd700, 0 0 20px #ffcc00;
-      margin-top: 10px;
+    .wand-name:hover {
+      text-shadow: 0 0 15px #ffd700, 0 0 25px #fff000;
     }
 
-    @media (max-width: 600px) {
-      .logo {
-        width: 60vw;
+    .sparkle {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      background: #ffd700;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkleAnim 5s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes sparkleAnim {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-img, .original-size {
+        width: 90%;
+        max-width: 100%;
       }
 
-      .item img {
-        max-width: 90vw;
-      }
-
-      .label {
-        font-size: 1rem;
+      .logo-img {
+        max-width: 200px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Invisible click area for autoplay -->
-  <div onclick="playMusic()" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;"></div>
+  <!-- Tap to start music -->
+  <div onclick="document.getElementById('bg-music').play()" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;"></div>
 
-  <!-- Audio -->
-  <audio id="background-music" loop>
-    <source src="hedwigs-theme.mp3" type="audio/mpeg">
+  <!-- Background Music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="hedwigs_theme.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
   <script>
-    function playMusic() {
-      const music = document.getElementById("background-music");
-      music.volume = 0.5;
-      music.play();
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById('bg-music').volume = 0.5;
+    });
+
+    // Add background sparkles
+    for (let i = 0; i < 100; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = `${Math.random() * 100}%`;
+      sparkle.style.top = `${Math.random() * 100}%`;
+      sparkle.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(sparkle);
     }
   </script>
 
   <!-- Logo -->
-  <div class="logo-container">
-    <img src="logo.png" alt="PuffDorInClaw Logo" class="logo">
-  </div>
+  <img src="image5.png" alt="Hogwarts Crest" class="logo-img" />
 
-  <!-- Wand & Merchandise Items -->
-  <div class="container">
-    <!-- Wands -->
-    <div class="item">
-      <img src="image1.jpg" alt="Elder Wand">
-      <div class="label">Elder Wand</div>
-    </div>
-    <div class="item">
-      <img src="image2.jpg" alt="Sirius Black">
-      <div class="label">Sirius Black</div>
-    </div>
-    <div class="item">
-      <img src="image3.jpg" alt="Albus Dumbledore">
-      <div class="label">Albus Dumbledore</div>
-    </div>
-    <div class="item">
-      <img src="image4.jpg" alt="Hermione Granger">
-      <div class="label">Hermione Granger</div>
-    </div>
-    <div class="item">
-      <img src="image5.jpg" alt="Harry Potter">
-      <div class="label">Harry Potter</div>
-    </div>
-    <div class="item">
-      <img src="image6.jpg" alt="Draco Malfoy">
-      <div class="label">Draco Malfoy</div>
-    </div>
-    <div class="item">
-      <img src="image7.jpg" alt="Bellatrix Lestrange">
-      <div class="label">Bellatrix Lestrange</div>
-    </div>
-    <div class="item">
-      <img src="image8.jpg" alt="Neville Longbottom">
-      <div class="label">Neville Longbottom</div>
-    </div>
-    <div class="item">
-      <img src="image9.jpg" alt="Luna Lovegood">
-      <div class="label">Luna Lovegood</div>
-    </div>
+  <h1 style="font-size:50px;">PuffDorInClaw</h1>
 
-    <!-- Merchandise -->
-    <div class="item">
-      <img src="image10.jpg" alt="Hogwarts Bookmark">
-      <div class="label">Hogwarts Bookmark</div>
-    </div>
-    <div class="item">
-      <img src="image11.jpg" alt="Marauder’s Map Notebook">
-      <div class="label">Marauder’s Map Notebook</div>
-    </div>
-    <div class="item">
-      <img src="image12.jpg" alt="Time Turner Necklace" style="max-width: none;">
-      <div class="label">Time Turner Necklace</div>
-    </div>
-    <div class="item">
-      <img src="image13.jpg" alt="Deathly Hallows Necklace" style="max-width: none;">
-      <div class="label">Deathly Hallows Necklace</div>
-    </div>
-    <div class="item">
-      <img src="image14.jpg" alt="Platform 9¾ Mug">
-      <div class="label">Platform 9¾ Mug</div>
-    </div>
-  </div>
+  <p style="font-size:20px;">
+    Step into the magical world of Harry Potter with our exclusive <br />
+    collection of wands and merchandise! Whether you're a Gryffindor,
+    Slytherin, Hufflepuff, or Ravenclaw, we offer high-quality
+    authentic wands, apparel, collectibles, and accessories to bring your
+    wizarding dreams to life.
+  </p>
+
+  <hr />
+  <p style="font-size:15px;">More about the wands:</p>
+  <p>
+    <a href="https://harrypotter.fandom.com/wiki/Elder_Wand">The Elder Wand</a><br />
+    <a href="https://harrypotter.fandom.com/wiki/Sirius_Black%27s_wand">Sirius Black's Wand</a><br />
+    <a href="https://harrypotter.fandom.com/wiki/Albus_Dumbledore%27s_wand">Albus Dumbledore's Wand</a><br />
+    <a href="https://harrypotter.fandom.com/wiki/Hermione_Granger%27s_wand">Hermione Granger's Wand</a><br />
+    <a href="https://harrypotter.fandom.com/wiki/Harry_Potter%27s_wand">Harry Potter's Wand</a><br />
+    <a href="https://harrypotter.fandom.com/wiki/Draco_Malfoy%27s_wand">Draco Malfoy's Wand</a><br />
+    <a href="https://harrypotter.fandom.com/wiki/Bellatrix_Lestrange%27s_wand">Bellatrix Lestrange's Wand</a><br />
+    <a href="https://harrypotter.fandom.com/wiki/Neville_Longbottom%27s_wand">Neville Longbottom's Wand</a><br />
+    <a href="https://harrypotter.fandom.com/wiki/Luna_Lovegood%27s_wand">Luna Lovegood's Wand</a>
+  </p>
+
+  <hr />
+  <p style="font-size:40px;">Wands</p>
+
+  <img src="image1.jpg" alt="Elder Wand" class="product-img" />
+  <div class="wand-name">Elder Wand</div>
+
+  <img src="image2.jpg" alt="Sirius Black's Wand" class="product-img" />
+  <div class="wand-name">Sirius Black</div>
+
+  <img src="image3.jpeg" alt="Albus Dumbledore's Wand" class="product-img" />
+  <div class="wand-name">Albus Dumbledore</div>
+
+  <img src="image4.png" alt="Hermione Granger's Wand" class="product-img" />
+  <div class="wand-name">Hermione Granger</div>
+
+  <img src="image6.png" alt="Harry Potter's Wand" class="product-img" />
+  <div class="wand-name">Harry Potter</div>
+
+  <img src="image7.png" alt="Draco Malfoy's Wand" class="product-img" />
+  <div class="wand-name">Draco Malfoy</div>
+
+  <img src="image11.png" alt="Bellatrix Lestrange's Wand" class="product-img" />
+  <div class="wand-name">Bellatrix Lestrange</div>
+
+  <img src="image9.png" alt="Neville Longbottom's Wand" class="product-img" />
+  <div class="wand-name">Neville Longbottom</div>
+
+  <img src="image10.png" alt="Luna Lovegood's Wand" class="product-img" />
+  <div class="wand-name">Luna Lovegood</div>
+
+  <hr />
+  <p style="font-size:40px;">Other Merchandise</p>
+  <hr />
+
+  <img src="123.png" class="product-img" alt="Bookmarks" />
+  <div class="wand-name">Bookmarks</div>
+
+  <img src="1231.png" class="original-size" alt="Time Turner Necklace" />
+  <div class="wand-name">Time Turner Necklace</div>
+
+  <img src="1232.png" class="product-img" alt="Complete Book Set" />
+  <div class="wand-name">Complete Book Set</div>
+
+  <img src="1233.png" class="product-img" alt="House Crest Notebook" />
+  <div class="wand-name">House Crest Notebook</div>
+
+  <img src="1234.png" class="product-img" alt="Ceramic Mug" />
+  <div class="wand-name">Ceramic Mug</div>
+
+  <img src="1235.png" class="original-size" alt="Deathly Hallows Necklace" />
+  <div class="wand-name">Deathly Hallows Necklace</div>
 
 </body>
 </html>
