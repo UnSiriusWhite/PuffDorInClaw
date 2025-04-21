@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>PuffDorInClaw</title>
   <link rel="icon" type="image/png" href="image5.png">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -17,7 +17,7 @@
 
     h1 {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 50px;
+      font-size: 60px;
       color: #ffd700;
       text-align: center;
       margin-top: 20px;
@@ -26,7 +26,8 @@
 
     p, a {
       text-align: center;
-      color: #ffd700;
+      color: white;
+      font-size: 18px;
     }
 
     a {
@@ -45,13 +46,13 @@
     }
 
     .product-img, .original-size {
-      width: 60%;
-      max-width: 500px;
+      width: 70%;
+      max-width: 600px;
       height: auto;
       display: block;
-      margin: 20px auto 10px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px 5px #ffd700aa;
+      margin: 25px auto 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 30px 8px #ffd700aa;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -61,16 +62,16 @@
     }
 
     .product-img:hover, .original-size:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 35px 12px #ffea00cc;
+      transform: scale(1.05);
+      box-shadow: 0 0 40px 14px #ffea00cc;
     }
 
     .wand-name {
       text-align: center;
       color: #ffd700;
       font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 30px;
+      font-size: 20px;
+      margin-bottom: 35px;
       text-shadow: 0 0 5px #ffd700;
       transition: text-shadow 0.3s ease;
     }
@@ -100,7 +101,11 @@
 
     @media (max-width: 768px) {
       .product-img, .original-size {
-        width: 90%;
+        width: 95%;
+      }
+
+      .logo-img {
+        max-width: 90%;
       }
 
       h1 {
@@ -110,12 +115,15 @@
       p {
         font-size: 16px;
       }
+
+      .wand-name {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background layer -->
   <div class="background-layer"></div>
 
   <!-- Background Music -->
@@ -127,9 +135,6 @@
     window.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('bg-music');
       audio.volume = 0.5;
-      document.body.addEventListener('click', () => {
-        audio.play();
-      }, { once: true });
     });
   </script>
 
@@ -140,17 +145,10 @@
   <h1>PuffDorInClaw</h1>
 
   <!-- Description -->
- <p style="color: white; text-align: center; font-size: 18px; line-height: 1.6; padding: 0 20px;">
-  Step into the enchanting world of Harry Potter with <strong>PuffDorInClaw</strong> — your ultimate destination for all things magical!<br><br>
-
-  From the hallowed halls of Hogwarts to the bustling streets of Diagon Alley, our collection brings the wizarding world right to your fingertips. Whether you're a brave Gryffindor, wise Ravenclaw, loyal Hufflepuff, or cunning Slytherin, you'll find something truly spellbinding to express your house pride.<br><br>
-
-  Explore our carefully curated selection of <strong>authentic wands</strong>, <strong>enchanted accessories</strong>, <strong>collectible treasures</strong>, and <strong>exclusive merchandise</strong> inspired by your favorite witches and wizards. Each item is crafted with detail and designed to transport you straight into the heart of the Harry Potter universe.<br><br>
-
-  Unleash your inner magic. Discover your wand. Embrace the charm.<br>
-  ✨ Welcome to <strong>PuffDorInClaw</strong> — where magic is real. ✨
-</p>
-
+  <p>
+    Step into the magical world of Harry Potter with our exclusive collection of wands and merchandise! Whether you're a Gryffindor, Slytherin, Hufflepuff, or Ravenclaw, our enchanted shop has something for everyone. <br>
+    Discover high-quality, officially inspired wizarding wands, cozy apparel, spellbinding collectibles, and magical accessories. From the Elder Wand to charming Time Turner necklaces, we've curated the finest treasures to bring your Hogwarts dreams to life. Whether you’re shopping for yourself or a fellow witch or wizard, PuffDorInClaw is your gateway to a truly magical experience.
+  </p>
 
   <hr>
 
@@ -177,7 +175,7 @@
   <a href="https://amzn.to/3Ew7YOC"><img src="image2.jpg" alt="Sirius Black's Wand" class="product-img"></a>
   <div class="wand-name">Sirius Black</div>
 
-  <a href="#"><img src="image3.jpeg" alt="Albus Dumbledore's Wand" class="product-img"></a>
+  <a href="https://amzn.to/3Ew7YOC"><img src="image3.jpeg" alt="Albus Dumbledore's Wand" class="product-img"></a>
   <div class="wand-name">Albus Dumbledore</div>
 
   <a href="https://amzn.to/4cAo3zm"><img src="image4.png" alt="Hermione Granger's Wand" class="product-img"></a>
