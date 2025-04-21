@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>PuffDorInClaw</title>
   <link rel="icon" type="image/png" href="image5.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -14,7 +15,16 @@
       overflow-x: hidden;
     }
 
-    h1, p, a {
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 50px;
+      color: #ffd700;
+      text-align: center;
+      margin-top: 20px;
+      text-shadow: 0 0 10px #ffd700, 0 0 20px #ffcc00, 0 0 40px #ffcc00;
+    }
+
+    p, a {
       text-align: center;
       color: #ffd700;
     }
@@ -41,7 +51,7 @@
       display: block;
       margin: 20px auto 10px;
       border-radius: 10px;
-      box-shadow: 0 0 25px 6px #ffd700aa;
+      box-shadow: 0 0 20px 5px #ffd700aa;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -52,7 +62,7 @@
 
     .product-img:hover, .original-size:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 45px 14px #ffea00cc;
+      box-shadow: 0 0 35px 12px #ffea00cc;
     }
 
     .wand-name {
@@ -94,7 +104,7 @@
       }
 
       h1 {
-        font-size: 35px;
+        font-size: 40px;
       }
 
       p {
@@ -105,7 +115,7 @@
 </head>
 <body>
 
-  <!-- Background Animation Layer -->
+  <!-- Background layer -->
   <div class="background-layer"></div>
 
   <!-- Background Music -->
@@ -113,39 +123,23 @@
     <source src="hedwigs_theme.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('bg-music');
       audio.volume = 0.5;
-    });
-
-    // Only autoplay on first body click, not on image links
-    document.body.addEventListener('click', function playMusicOnce() {
-      const audio = document.getElementById('bg-music');
-      if (audio.paused) {
+      document.body.addEventListener('click', () => {
         audio.play();
-      }
-      document.body.removeEventListener('click', playMusicOnce);
+      }, { once: true });
     });
   </script>
 
   <!-- Logo -->
   <img src="image5.png" alt="Hogwarts Crest" class="logo-img">
 
-  h1 {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 50px;
-  color: #ffd700;
-  text-align: center;
-  margin-top: 20px;
-  text-shadow:
-    0 0 10px #ffd700,
-    0 0 20px #ffcc00,
-    0 0 40px #ffcc00;
-}
+  <!-- Title -->
+  <h1>PuffDorInClaw</h1>
 
-
+  <!-- Description -->
   <p>
     Step into the magical world of Harry Potter with our exclusive <br>
     collection of wands and merchandise! Whether you're a Gryffindor,
@@ -204,22 +198,22 @@
   <p style="font-size:40px;">Other Merchandise</p>
   <hr>
 
-  <a href="https://amzn.to/42tHeGo"><img src="123.png" class="product-img" alt="Bookmarks"></a>
+  <a href="https://amzn.to/42tHeGo"><img src="123.png" class="product-img"></a>
   <div class="wand-name">Bookmarks</div>
 
-  <a href="https://amzn.to/3EoBeXH"><img src="1231.png" class="original-size" alt="Time Turner Necklace"></a>
+  <a href="https://amzn.to/3EoBeXH"><img src="1231.png" class="original-size"></a>
   <div class="wand-name">Time Turner Necklace</div>
 
-  <a href="https://amzn.to/4jEuJPg"><img src="1232.png" class="product-img" alt="Complete Book Set"></a>
+  <a href="https://amzn.to/4jEuJPg"><img src="1232.png" class="product-img"></a>
   <div class="wand-name">Complete Book Set</div>
 
-  <a href="https://amzn.to/42SoYrJ"><img src="1233.png" class="product-img" alt="House Crest Notebook"></a>
+  <a href="https://amzn.to/42SoYrJ"><img src="1233.png" class="product-img"></a>
   <div class="wand-name">House Crest Notebook</div>
 
-  <a href="https://amzn.to/42mpDl9"><img src="1234.png" class="product-img" alt="Ceramic Mug"></a>
+  <a href="https://amzn.to/42mpDl9"><img src="1234.png" class="product-img"></a>
   <div class="wand-name">Ceramic Mug</div>
 
-  <a href="https://amzn.to/4cCoxFb"><img src="1235.png" class="original-size" alt="Deathly Hallows Necklace"></a>
+  <a href="https://amzn.to/4cCoxFb"><img src="1235.png" class="original-size"></a>
   <div class="wand-name">Deathly Hallows Necklace</div>
 
 </body>
