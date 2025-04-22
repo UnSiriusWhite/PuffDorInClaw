@@ -47,7 +47,7 @@
     }
 
     .product-img, .original-size {
-      width: 75%;
+      width: 70%;
       max-width: 600px;
       height: auto;
       display: block;
@@ -71,9 +71,10 @@
       text-align: center;
       color: #ffd700;
       font-weight: bold;
-      font-size: 22px;
+      font-size: 20px;
       margin-bottom: 30px;
       text-shadow: 0 0 5px #ffd700;
+      transition: text-shadow 0.3s ease;
     }
 
     .wand-name:hover {
@@ -87,18 +88,17 @@
       width: 100%;
       height: 100%;
       z-index: -2;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255, 215, 0, 0.1), transparent 40%),
-        radial-gradient(circle at 85% 70%, rgba(255, 215, 0, 0.1), transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.08), transparent 50%);
+      background: radial-gradient(circle at 25% 40%, rgba(255, 215, 0, 0.12), transparent 45%),
+                  radial-gradient(circle at 70% 80%, rgba(255, 215, 0, 0.10), transparent 50%),
+                  radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.08), transparent 60%);
       background-size: cover;
-      animation: shimmer 30s infinite linear alternate;
-      opacity: 0.4;
+      animation: shimmer 20s infinite linear alternate;
+      opacity: 0.3;
     }
 
     @keyframes shimmer {
       0% { background-position: 0 0; }
-      100% { background-position: 200px 200px; }
+      100% { background-position: 100px 100px; }
     }
 
     .click-trigger {
@@ -130,13 +130,20 @@
 
   <div class="background-layer"></div>
 
-  <div class="click-trigger" onclick="document.getElementById('bg-music').play()"></div>
+  <div class="click-trigger" onclick="enableMusic()"></div>
 
   <audio id="bg-music" autoplay loop>
     <source src="hedwigs_theme.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+
   <script>
+    function enableMusic() {
+      const audio = document.getElementById('bg-music');
+      audio.play();
+      document.querySelector('.click-trigger').style.display = 'none'; // allow link clicks after
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       document.getElementById('bg-music').volume = 0.5;
     });
@@ -146,12 +153,13 @@
 
   <h1>PuffDorInClaw</h1>
 
-  <p style="max-width: 800px; margin: auto; padding: 0 20px;">
-    Welcome to <strong>PuffDorInClaw</strong>, your magical portal into the world of Harry Potter! Explore our spellbinding selection of premium wands, iconic accessories, and enchanting collectibles. Whether you’re a brave Gryffindor, loyal Hufflepuff, wise Ravenclaw, or cunning Slytherin — we’ve got magical treasures just for you.
+  <p style="color: white; max-width: 800px; margin: auto; padding: 0 20px;">
+    Welcome to <strong>PuffDorInClaw</strong>, your ultimate portal into the magical world of Harry Potter! Discover our enchanting collection of high-quality wands, iconic accessories, and exclusive wizarding merchandise. Whether you're a proud Gryffindor, loyal Hufflepuff, clever Ravenclaw, or ambitious Slytherin — we have something spellbinding just for you. Bring your Hogwarts dreams to life with treasures inspired by the world’s favorite wizarding universe!
   </p>
 
   <hr>
-  <p>Learn more about each wand:</p>
+
+  <p>More about the wands:</p>
   <p>
     <a href="https://harrypotter.fandom.com/wiki/Elder_Wand">The Elder Wand</a><br>
     <a href="https://harrypotter.fandom.com/wiki/Sirius_Black%27s_wand">Sirius Black's Wand</a><br>
