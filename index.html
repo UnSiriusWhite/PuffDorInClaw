@@ -103,14 +103,17 @@
       100% { background-position: 100px 100px; }
     }
 
-    .click-trigger {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 1;
-      background: transparent;
+   .click-trigger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background: transparent;
+  pointer-events: none; /* ⬅️ This lets clicks pass through */
+}
+
     }
 
     @media (max-width: 768px) {
