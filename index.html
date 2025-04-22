@@ -39,16 +39,16 @@
     }
 
     .logo-img {
-      max-width: 450px;
-      width: 90%;
+      max-width: 500px;
+      width: 95%;
       height: auto;
       display: block;
       margin: 20px auto;
     }
 
     .product-img, .original-size {
-      width: 65%;
-      max-width: 550px;
+      width: 75%;
+      max-width: 600px;
       height: auto;
       display: block;
       margin: 20px auto 10px;
@@ -71,41 +71,34 @@
       text-align: center;
       color: #ffd700;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 22px;
       margin-bottom: 30px;
       text-shadow: 0 0 5px #ffd700;
-      transition: text-shadow 0.3s ease;
     }
 
     .wand-name:hover {
       text-shadow: 0 0 15px #ffd700, 0 0 25px #fff000;
     }
 
-    /* Magical glowing orbs in background */
-    .glow-container {
+    .background-layer {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
-      overflow: hidden;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 215, 0, 0.1), transparent 40%),
+        radial-gradient(circle at 85% 70%, rgba(255, 215, 0, 0.1), transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.08), transparent 50%);
+      background-size: cover;
+      animation: shimmer 30s infinite linear alternate;
+      opacity: 0.4;
     }
 
-    .glow {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: radial-gradient(circle, #ffd700 0%, transparent 80%);
-      border-radius: 50%;
-      animation: float 10s infinite ease-in-out;
-      opacity: 0.2;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) scale(1); opacity: 0.2; }
-      50% { transform: translateY(-20px) scale(1.2); opacity: 0.4; }
-      100% { transform: translateY(0) scale(1); opacity: 0.2; }
+    @keyframes shimmer {
+      0% { background-position: 0 0; }
+      100% { background-position: 200px 200px; }
     }
 
     .click-trigger {
@@ -135,7 +128,7 @@
 </head>
 <body>
 
-  <div class="glow-container" id="glow-container"></div>
+  <div class="background-layer"></div>
 
   <div class="click-trigger" onclick="document.getElementById('bg-music').play()"></div>
 
@@ -146,18 +139,6 @@
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       document.getElementById('bg-music').volume = 0.5;
-
-      // Create random glowing orbs
-      const container = document.getElementById('glow-container');
-      for (let i = 0; i < 30; i++) {
-        const glow = document.createElement('div');
-        glow.classList.add('glow');
-        glow.style.top = Math.random() * 100 + '%';
-        glow.style.left = Math.random() * 100 + '%';
-        glow.style.animationDuration = (5 + Math.random() * 15) + 's';
-        glow.style.opacity = 0.15 + Math.random() * 0.3;
-        container.appendChild(glow);
-      }
     });
   </script>
 
@@ -165,13 +146,12 @@
 
   <h1>PuffDorInClaw</h1>
 
-  <p style="color: white; max-width: 800px; margin: auto; padding: 0 20px;">
-    Welcome to <strong>PuffDorInClaw</strong>, your ultimate portal into the magical world of Harry Potter! Discover our enchanting collection of high-quality wands, iconic accessories, and exclusive wizarding merchandise. Whether you're a proud Gryffindor, loyal Hufflepuff, clever Ravenclaw, or ambitious Slytherin — we have something spellbinding just for you. Bring your Hogwarts dreams to life with treasures inspired by the world’s favorite wizarding universe!
+  <p style="max-width: 800px; margin: auto; padding: 0 20px;">
+    Welcome to <strong>PuffDorInClaw</strong>, your magical portal into the world of Harry Potter! Explore our spellbinding selection of premium wands, iconic accessories, and enchanting collectibles. Whether you’re a brave Gryffindor, loyal Hufflepuff, wise Ravenclaw, or cunning Slytherin — we’ve got magical treasures just for you.
   </p>
 
   <hr>
-
-  <p>More about the wands:</p>
+  <p>Learn more about each wand:</p>
   <p>
     <a href="https://harrypotter.fandom.com/wiki/Elder_Wand">The Elder Wand</a><br>
     <a href="https://harrypotter.fandom.com/wiki/Sirius_Black%27s_wand">Sirius Black's Wand</a><br>
