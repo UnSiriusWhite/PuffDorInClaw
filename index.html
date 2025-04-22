@@ -13,6 +13,7 @@
       font-family: 'Arial', sans-serif;
       color: white;
       overflow-x: hidden;
+      position: relative;
     }
 
     h1 {
@@ -27,7 +28,6 @@
     p, a {
       text-align: center;
       color: white;
-      font-size: 18px;
     }
 
     a {
@@ -40,19 +40,20 @@
 
     .logo-img {
       max-width: 450px;
+      width: 90%;
       height: auto;
       display: block;
-      margin: 30px auto;
+      margin: 20px auto;
     }
 
     .product-img, .original-size {
-      width: 70%;
+      width: 65%;
       max-width: 550px;
       height: auto;
       display: block;
-      margin: 25px auto 10px;
+      margin: 20px auto 10px;
       border-radius: 10px;
-      box-shadow: 0 0 25px 8px #ffd700aa;
+      box-shadow: 0 0 25px 10px #ffd700aa;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -63,7 +64,7 @@
 
     .product-img:hover, .original-size:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 40px 15px #ffea00cc;
+      box-shadow: 0 0 40px 18px #ffea00cc;
     }
 
     .wand-name {
@@ -71,8 +72,8 @@
       color: #ffd700;
       font-weight: bold;
       font-size: 20px;
-      margin-bottom: 35px;
-      text-shadow: 0 0 6px #ffd700;
+      margin-bottom: 30px;
+      text-shadow: 0 0 5px #ffd700;
       transition: text-shadow 0.3s ease;
     }
 
@@ -80,17 +81,20 @@
       text-shadow: 0 0 15px #ffd700, 0 0 25px #fff000;
     }
 
+    /* Magical Background with Golden Glow Bursts */
     .background-layer {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      pointer-events: none;
-      background: radial-gradient(ellipse at center, rgba(255,215,0,0.1), transparent 70%),
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.15), transparent 40%),
+                  radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.12), transparent 50%),
+                  radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.07), transparent 60%),
                   url('https://www.transparenttextures.com/patterns/stardust.png');
-      animation: shimmer 15s infinite linear alternate;
+      background-size: cover;
+      animation: shimmer 20s infinite linear alternate;
       opacity: 0.3;
     }
 
@@ -99,13 +103,19 @@
       100% { background-position: 100px 100px; }
     }
 
+    .click-trigger {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      background: transparent;
+    }
+
     @media (max-width: 768px) {
       .product-img, .original-size {
-        width: 95%;
-      }
-
-      .logo-img {
-        max-width: 90%;
+        width: 90%;
       }
 
       h1 {
@@ -120,38 +130,30 @@
 </head>
 <body>
 
-  <!-- Background Animation -->
   <div class="background-layer"></div>
 
-  <!-- Background Music -->
+  <div class="click-trigger" onclick="document.getElementById('bg-music').play()"></div>
+
   <audio id="bg-music" autoplay loop>
     <source src="hedwigs_theme.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      const audio = document.getElementById('bg-music');
-      audio.volume = 0.5;
+      document.getElementById('bg-music').volume = 0.5;
     });
   </script>
 
-  <!-- Logo -->
   <img src="image5.png" alt="Hogwarts Crest" class="logo-img">
 
-  <!-- Title -->
   <h1>PuffDorInClaw</h1>
 
-  <!-- Description -->
-  <p>
-    Step into the magical world of Harry Potter with our exclusive collection of wands and merchandise! <br>
-    Whether you're a Gryffindor, Slytherin, Hufflepuff, or Ravenclaw, we offer high-quality, authentic <br>
-    wands, apparel, collectibles, and magical accessories to bring your wizarding dreams to life. <br>
-    Experience enchantment with every item and let your journey to Hogwarts begin!
+  <p style="color: white; max-width: 800px; margin: auto; padding: 0 20px;">
+    Welcome to <strong>PuffDorInClaw</strong>, your ultimate portal into the magical world of Harry Potter! Discover our enchanting collection of high-quality wands, iconic accessories, and exclusive wizarding merchandise. Whether you're a proud Gryffindor, loyal Hufflepuff, clever Ravenclaw, or ambitious Slytherin — we have something spellbinding just for you. Bring your Hogwarts dreams to life with treasures inspired by the world’s favorite wizarding universe!
   </p>
 
   <hr>
 
-  <!-- Wand Info Links -->
   <p>More about the wands:</p>
   <p>
     <a href="https://harrypotter.fandom.com/wiki/Elder_Wand">The Elder Wand</a><br>
@@ -166,16 +168,13 @@
   </p>
 
   <hr>
-  <p style="font-size:40px;">Wands</p>
+  <p style="font-size: 40px;">Wands</p>
 
   <a href="https://amzn.to/3Ew7YOC"><img src="image1.jpg" alt="Elder Wand" class="product-img"></a>
   <div class="wand-name">Elder Wand</div>
 
   <a href="https://amzn.to/3Ew7YOC"><img src="image2.jpg" alt="Sirius Black's Wand" class="product-img"></a>
   <div class="wand-name">Sirius Black</div>
-
-  <a href="https://amzn.to/3Ew7YOC"><img src="image3.jpeg" alt="Albus Dumbledore's Wand" class="product-img"></a>
-  <div class="wand-name">Albus Dumbledore</div>
 
   <a href="https://amzn.to/4cAo3zm"><img src="image4.png" alt="Hermione Granger's Wand" class="product-img"></a>
   <div class="wand-name">Hermione Granger</div>
@@ -196,7 +195,7 @@
   <div class="wand-name">Luna Lovegood</div>
 
   <hr>
-  <p style="font-size:40px;">Other Merchandise</p>
+  <p style="font-size: 40px;">Other Merchandise</p>
   <hr>
 
   <a href="https://amzn.to/42tHeGo"><img src="123.png" class="product-img"></a>
