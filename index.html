@@ -39,16 +39,16 @@
     }
 
     .logo-img {
-      max-width: 450px;
-      width: 90%;
+      max-width: 500px;
+      width: 95%;
       height: auto;
       display: block;
       margin: 20px auto;
     }
 
     .product-img, .original-size {
-      width: 65%;
-      max-width: 550px;
+      width: 75%;
+      max-width: 600px;
       height: auto;
       display: block;
       margin: 20px auto 10px;
@@ -71,7 +71,7 @@
       text-align: center;
       color: #ffd700;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 22px;
       margin-bottom: 30px;
       text-shadow: 0 0 5px #ffd700;
       transition: text-shadow 0.3s ease;
@@ -103,22 +103,20 @@
       100% { background-position: 100px 100px; }
     }
 
-   .click-trigger {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  background: transparent;
-  pointer-events: none; /* ⬅️ This lets clicks pass through */
-}
-
+    .click-trigger {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      background: transparent;
+      pointer-events: none; /* FIXED: lets clicks pass through */
     }
 
     @media (max-width: 768px) {
       .product-img, .original-size {
-        width: 90%;
+        width: 95%;
       }
 
       h1 {
