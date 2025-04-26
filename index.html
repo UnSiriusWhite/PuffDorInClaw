@@ -14,7 +14,7 @@
     color: #e6d8b9;
     background-color: #0d0d0d;
     background-image: 
-      url('parchment-texture.png'),
+      url('parchment-texture.png'), 
       linear-gradient(to bottom right, #1a1a1a, #2c1900);
     background-repeat: repeat;
     background-size: 600px, 100% 100%;
@@ -29,7 +29,13 @@
     color: #ffd700;
     text-align: center;
     margin-top: 20px;
-    text-shadow: 0 0 15px #ffd700, 0 0 30px #ffcc00, 0 0 45px #ffcc00;
+    text-shadow: 0 0 10px #ffd700, 0 0 20px #ffcc00, 0 0 40px #ffcc00;
+    animation: glowing 1.5s infinite alternate;
+  }
+
+  @keyframes glowing {
+    0% { text-shadow: 0 0 10px #ffd700, 0 0 20px #ffcc00, 0 0 30px #ffcc00; }
+    100% { text-shadow: 0 0 20px #ffd700, 0 0 40px #ffcc00, 0 0 60px #ffcc00; }
   }
 
   p, a {
@@ -62,6 +68,12 @@
     border-radius: 10px;
     box-shadow: 0 0 25px 10px #ffd700aa;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: glowAnimation 2s infinite alternate;
+  }
+
+  @keyframes glowAnimation {
+    0% { box-shadow: 0 0 25px 10px #ffd700aa; }
+    100% { box-shadow: 0 0 45px 18px #ffea00cc; }
   }
 
   .original-size {
@@ -71,7 +83,7 @@
 
   .product-img:hover, .original-size:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 50px 25px #ffea00cc;
+    box-shadow: 0 0 40px 18px #ffea00cc;
   }
 
   .wand-name {
@@ -80,15 +92,14 @@
     font-weight: bold;
     font-size: 20px;
     margin-bottom: 30px;
-    text-shadow: 0 0 10px #ffd700;
+    text-shadow: 0 0 5px #ffd700;
     transition: text-shadow 0.3s ease;
   }
 
   .wand-name:hover {
-    text-shadow: 0 0 20px #ffd700, 0 0 30px #fff000;
+    text-shadow: 0 0 15px #ffd700, 0 0 25px #fff000;
   }
 
-  /* Magic Background Layer */
   .background-layer {
     position: fixed;
     top: 0;
@@ -96,20 +107,19 @@
     width: 100%;
     height: 100%;
     z-index: -2;
-    background: radial-gradient(circle at 25% 40%, rgba(255, 215, 0, 0.15), transparent 45%),
+    background: radial-gradient(circle at 25% 40%, rgba(255, 215, 0, 0.12), transparent 45%),
                 radial-gradient(circle at 70% 80%, rgba(255, 215, 0, 0.10), transparent 50%),
                 radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.08), transparent 60%);
     background-size: cover;
-    animation: shimmer 30s infinite linear alternate;
-    opacity: 0.6;
+    animation: shimmer 20s infinite linear alternate;
+    opacity: 0.3;
   }
 
   @keyframes shimmer {
     0% { background-position: 0 0; }
-    100% { background-position: 200px 200px; }
+    100% { background-position: 100px 100px; }
   }
 
-  /* Click trigger to start background music */
   .click-trigger {
     position: fixed;
     top: 0;
@@ -134,7 +144,6 @@
     }
   }
 </style>
-
 </head>
 
 <body>
@@ -216,13 +225,7 @@
  <a href="https://amzn.to/42tHeGo"><img src="123.png" class="product-img"></a>
 <div class="wand-name">Bookmarks</div>
 
-<a href="https://amzn.to/3EoBeXH"><img src="1231.png" class="product-img"></a>
-<div class="wand-name">Time Turner Necklace</div>
-
-<a href="https://amzn.to/4jEuJPg"><img src="1232.png" class="product-img"></a>
-<div class="wand-name">Complete Bookset</div>
-
-<a href="https://amzn.to/42SoYrJ"><img src="1234.png" class="product-img"></a>
-<div class="wand-name">House Crest Notebook</div>
+<a href="https://amzn.to/4cCoxFb"><img src="456.png" class="product-img"></a>
+<div class="wand-name">Deathly Hallows Necklace</div>
 </body>
 </html>
